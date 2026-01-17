@@ -1,0 +1,40 @@
+
+
+// vector<vector<int>> findThreeSum(vector<int>& nums) {
+//     vector<vector<int>> result;
+
+//     // Step 1: Sort the array
+//     sort(nums.begin(), nums.end());
+//     int n = nums.size();
+
+//     // Step 2: Iterate through the array with 'i' as the first element of the triplet
+//     for (int i = 0; i < n - 2; ++i) {
+//         // Skip duplicate 'i' values to avoid duplicate triplets
+//         if (i > 0 && nums[i] == nums[i - 1]) continue;
+
+//         int left = i + 1; // Pointer for the second element
+//         int right = n - 1; // Pointer for the third element
+
+//         // Step 3: Use two pointers to find the other two numbers
+//         while (left < right) {
+//             int currentSum = nums[i] + nums[left] + nums[right];
+//             if (currentSum == 0) {
+//                 // Found a triplet that sums to zero
+//                 result.push_back({nums[i], nums[left], nums[right]});
+
+//                 // Move pointers and skip duplicates for 'left' and 'right'
+//                 while (left < right && nums[left] == nums[left + 1]) left++;
+//                 while (left < right && nums[right] == nums[right - 1]) right--;
+
+//                 left++;
+//                 right--;
+//             } else if (currentSum < 0) {
+//                 left++; // Increase the sum
+//             } else {
+//                 right--; // Decrease the sum
+//             }
+//         }
+//     }
+
+//     return result;
+// }
