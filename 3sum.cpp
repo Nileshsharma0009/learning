@@ -38,3 +38,40 @@
 
 //     return result;
 // }
+
+
+
+
+
+
+
+
+// vector<int> maxPrefixes(vector<int>& arr, vector<int>& leftIndex, vector<int>& rightIndex) {
+//     // Your code here
+
+
+// 	   vector<int> ans;
+
+//     int q = leftIndex.size();
+
+//     for (int i = 0; i < q; i++) {
+
+//         int L = leftIndex[i];
+//         int R = rightIndex[i];
+
+//         int currSum = 0;
+//         int maxSum = INT_MIN;
+
+//         int k = L;   // left pointer
+
+//         while (k<= R) {
+//             currSum += arr[k];          // prefix sum
+//             maxSum = max(maxSum, currSum);
+//             k++;                        // move right
+//         }
+
+//         ans.push_back(maxSum);
+//     }
+
+//     return ans;
+// }
