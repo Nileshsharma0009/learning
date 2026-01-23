@@ -113,3 +113,43 @@
 //     }
 //     return false;
 // }
+
+
+
+
+
+// class Solution {
+// public:
+//     bool canSplit(vector<int>& nums, int k, int maxAllowedSum) {
+//         int subarrays = 1;
+//         int currSum = 0;
+
+//         for (int num : nums) {
+//             if (currSum + num <= maxAllowedSum) {
+//                 currSum += num;
+//             } else {
+//                 subarrays++;
+//                 currSum = num;
+//             }
+//         }
+
+//         return subarrays <= k;
+//     }
+
+//     int splitArray(vector<int>& nums, int k) {
+//         int start = *max_element(nums.begin(), nums.end());
+//         int end = accumulate(nums.begin(), nums.end(), 0);
+
+//         while (start < end) {
+//             int mid = start + (end - start) / 2;
+
+//             if (canSplit(nums, k, mid)) {
+//                 end = mid;          // try smaller maximum
+//             } else {
+//                 start = mid + 1;    // need larger maximum
+//             }
+//         }
+
+//         return start;
+//     }
+// };
