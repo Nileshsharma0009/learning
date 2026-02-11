@@ -21,3 +21,26 @@ int strStr(string &haystack, string &needle) {
             }
         }
     }
+
+    // Step 2: KMP search
+    int pref = 0, suf = 0;
+
+    while (suf < m) {
+        if (haystack[suf] == needle[pref]) {
+            suf++;
+            pref++;
+
+            if (pref == n) {
+                return suf - pref;  // match found
+            }
+        } else {
+            if (pref == 0) {
+                suf++;
+            } else {
+                pref = lps[pref - 1];
+            }
+        }
+    }
+
+    return -1; // no match
+}
