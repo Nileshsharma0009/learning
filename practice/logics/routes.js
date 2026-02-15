@@ -5,5 +5,8 @@ export const  resgiter =   (req , res) =>{
      if(!name ||  !email || ! password){
         return res.status(400).json({error : "all fieldsa are required"});
      }
+     if(!name ||  !email || ! password){
+        return res.status(400).json({error : "all fieldsa are required"});
+     }
 
 }
