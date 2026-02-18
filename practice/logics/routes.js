@@ -86,3 +86,13 @@ export const  signup = async (req , res) => {
 }
 
 
+
+export const Logout= (req , res) =>
+{
+   try{
+      res.clearCookie("token" ,)
+
+   }catch(err){
+
+   }
+}
