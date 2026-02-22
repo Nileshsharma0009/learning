@@ -14,6 +14,17 @@ app.use(
     ])
 );
 
+app.use(
+    cors([
+        origin:[
+            "url 2" ,
+            "url 3",
+        ],
+
+        credentials:  true ,
+    ])
+);
+
 app.use(express.json()) ;
 app.use(cookieParser()) ;
 
