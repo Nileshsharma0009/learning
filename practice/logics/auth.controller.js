@@ -77,6 +77,36 @@ const Login =  async  (req , res) =>{
             return res.status(400).json({error : "all fields are required"});
         }
 
-        const user
+        const user = await User.findOne({email}) ;
+
+        if(!user){
+            return res.status(400).json({error :"invalid credentials"});
+        }
+
+        const valid = await bcrypt .compare(password ,user.password) ;
+        if(!valid){
+            return res.status(400).json({error : "invalid credentials"});
+        }
+
+        const token = await gentoken(user.id);
+
+        res.cookie("token" , token , {
+            httpOnly : true ,
+            secure : isProd ,
+            sameSite : isProd ? "none" : "strict" ,
+        })
     }
+    catch(error){
+        res.status(500).json({error : "server error"});
+    }
+}
+
+
+
+const Logout = (req , res) => {
+    res.clearCookie("token" , {
+        httpOnly : true ,
+        secure : isProd ,
+        sameSite : isProd ? "none" : "strict" ,
+    })
 }
