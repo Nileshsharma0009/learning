@@ -1,4 +1,5 @@
-
+import { secureHeapUsed } from "crypto";
+import gentoken from "../utils/gentoken.js";
 
 const register = (_req, res) => {
     const { name, email, password } = req.body;
@@ -32,3 +33,40 @@ const register = (_req, res) => {
         },
     });
 }
+
+
+const signup =  (req,res) => {
+    try{
+
+        const {email , password} = req.body ;
+
+        if(!email || !password){
+            return res.status(400).json({error : "all fields are required"});
+        }
+        const existUser =  await User.findOne({email});
+            if(existUser){
+                return res.status(400).json({error : "user already exists"});
+            }
+
+            const hashPassword = await bcrypt.hash(password , 10);
+
+            const user = await User.create({
+                email , password : hashPassword ,
+            })
+
+            const token = await  gentoken(user.id) ;
+
+            res.cookie("token" ,token, {
+                httpOnly : true ,
+                secure:isProd ,
+                sameSite : is
+            })
+
+    }catch(error){
+        res.status(500).json({error : "server error"});
+
+    }
+}
+
+
+const Login =  async  ()
