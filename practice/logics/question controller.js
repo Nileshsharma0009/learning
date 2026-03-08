@@ -16,3 +16,19 @@ const getQuestion = async(req , res) => {
     }
 
 }
+
+
+const getmyresult = async(req , res) =>{
+    try{
+        const results = await  Result.find({
+            userId:req.user.id,
+
+        }).sort({createdAt : -1}) ;
+
+        res.json(results) ;
+
+    }catch(err){
+       console.error(err) ;
+       res.status(500).json({message:"failed to fetch results"}) ;
+    }
+}
