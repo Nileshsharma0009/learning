@@ -1,18 +1,51 @@
-// struct ListNode {
-//     int val;
-//     ListNode *next;
-//     ListNode() : val(0), next(nullptr) {}
-//     ListNode(int x) : val(x), next(nullptr) {}
-//     ListNode(int x, ListNode *next) : val(x), next(next) {}
-// };
-ListNode* reverseList(ListNode* head) {
-    ListNode*prev = NULL , *curr = head , *future= NULL ;
+vector<int > Build(string & pat){
+	int n = pat.size();
+   vector<int> lps(n ,0);
+	int prefix=0 ;
+	int suffix = 1;
 
-	while(curr){
-		future = curr->next ;
-		curr-> next = prev ;
-		prev = curr ;
-		curr = future ;
+	while(suffix < n){
+		if(pat[prefix]==pat[suffix]){
+			prefix++;
+			lps[suffix]=prefix ;
+			suffix;
+		}
 	}
-	return prev ;
+
+}
+
+
+vector<int> search(string &pat, string &txt) {
+    // Your code here
+    int n = pat.size();
+	int m = txt.size();
+    vector<int> ans ;
+	vector<int> LPS = Build(pat) ;
+
+	if( n > m ){
+		return;
+	}
+
+	int text = 0 , pattern = 0 ;
+
+	while(text < m){
+		if(pat[pattern]==txt[text]){
+			text++, pattern++;
+		}
+
+		if(pattern == n){
+			ans.push_back(text - pattern);
+
+			pattern = lps[pattern -1];
+		}else if(text < n && txt[text] != pat[pattern]){
+			if(pattern!= 0){
+				pattern - lps[pattern -1] ;
+			}else{
+				text++ ;
+			}
+		}
+	}return ans ;
+
+
+		
 }
