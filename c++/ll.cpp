@@ -1,336 +1,57 @@
-vector<int > Build(string & pat){
-	int n = pat.size();
-   vector<int> lps(n ,0);
-	int prefix=0 ;
-	int suffix = 1;
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 
-	while(suffix < n){
-		if(pat[prefix]==pat[suffix]){
-			prefix++;
-			lps[suffix]=prefix ;
-			suffix;
-		}
-	}
+ListNode* mergeTwoLists(ListNode* l1, ListNode* l2)
+{
+    ListNode dummy(0);
+    ListNode* tail = &dummy;
 
+    while(l1 && l2)
+    {
+        if(l1->val <= l2->val)
+        {
+            tail->next = l1;
+            l1 = l1->next;
+        }
+        else
+        {
+            tail->next = l2;
+            l2 = l2->next;
+        }
+
+        tail = tail->next;
+    }
+
+    if(l1) tail->next = l1;
+    else tail->next = l2;
+
+    return dummy.next;
 }
 
-vector<vector<int>> transpose(vector<vector<int>>& mat) {
-    int   row = mat.size() , col = mat[0].size() ;
-  
-	for(int i = 0 ;i< row ;i++){
-		for(int j = i+ 1;j < col; j++){
-			swap(mat[i][j] ,mat[j][i]) ;
-			
-			
-		}
-	}
-	return mat ;
-}
-vector<int > Build(string & pat){
-	int n = pat.size();
-   vector<int> lps(n ,0);
-	int prefix=0 ;
-	int suffix = 1;
+ListNode* solve(vector<ListNode*>& lists, int left, int right)
+{
+    if(left > right) return NULL;
+    if(left == right) return lists[left];
 
-	while(suffix < n){
-		if(pat[prefix]==pat[suffix]){
-			prefix++;
-			lps[suffix]=prefix ;
-			suffix;
-		}
-	}
+    int mid = (left + right) / 2;
 
+    ListNode* l1 = solve(lists, left, mid);
+    ListNode* l2 = solve(lists, mid + 1, right);
+
+    return mergeTwoLists(l1, l2);
 }
 
-vector<vector<int>> transpose(vector<vector<int>>& mat) {
-    int   row = mat.size() , col = mat[0].size() ;
-  
-	for(int i = 0 ;i< row ;i++){
-		for(int j = i+ 1;j < col; j++){
-			swap(mat[i][j] ,mat[j][i]) ;
-			
-			
-		}
-	}
-	return mat ;
-}
-vector<int > Build(string & pat){
-	int n = pat.size();
-   vector<int> lps(n ,0);
-	int prefix=0 ;
-	int suffix = 1;
+ListNode* mergeKLists(vector<ListNode*>& lists) {
+    
+    if(lists.size() == 0) return NULL;
 
-	while(suffix < n){
-		if(pat[prefix]==pat[suffix]){
-			prefix++;
-			lps[suffix]=prefix ;
-			suffix;
-		}
-	}
-
-}
-
-vector<vector<int>> transpose(vector<vector<int>>& mat) {
-    int   row = mat.size() , col = mat[0].size() ;
-  
-	for(int i = 0 ;i< row ;i++){
-		for(int j = i+ 1;j < col; j++){
-			swap(mat[i][j] ,mat[j][i]) ;
-			
-			
-		}
-	}
-	return mat ;
-}
-vector<int > Build(string & pat){
-	int n = pat.size();
-   vector<int> lps(n ,0);
-	int prefix=0 ;
-	int suffix = 1;
-
-	while(suffix < n){
-		if(pat[prefix]==pat[suffix]){
-			prefix++;
-			lps[suffix]=prefix ;
-			suffix;
-		}
-	}
-
-}
-
-vector<vector<int>> transpose(vector<vector<int>>& mat) {
-    int   row = mat.size() , col = mat[0].size() ;
-  
-	for(int i = 0 ;i< row ;i++){
-		for(int j = i+ 1;j < col; j++){
-			swap(mat[i][j] ,mat[j][i]) ;
-			
-			
-		}
-	}
-	return mat ;
-}
-vector<int > Build(string & pat){
-	int n = pat.size();
-   vector<int> lps(n ,0);
-	int prefix=0 ;
-	int suffix = 1;
-
-	while(suffix < n){
-		if(pat[prefix]==pat[suffix]){
-			prefix++;
-			lps[suffix]=prefix ;
-			suffix;
-		}
-	}
-
-}
-
-vector<vector<int>> transpose(vector<vector<int>>& mat) {
-    int   row = mat.size() , col = mat[0].size() ;
-  
-	for(int i = 0 ;i< row ;i++){
-		for(int j = i+ 1;j < col; j++){
-			swap(mat[i][j] ,mat[j][i]) ;
-			
-			
-		}
-	}
-	return mat ;
-}
-vector<int > Build(string & pat){
-	int n = pat.size();
-   vector<int> lps(n ,0);
-	int prefix=0 ;
-	int suffix = 1;
-
-	while(suffix < n){
-		if(pat[prefix]==pat[suffix]){
-			prefix++;
-			lps[suffix]=prefix ;
-			suffix;
-		}
-	}
-
-}
-
-vector<vector<int>> transpose(vector<vector<int>>& mat) {
-    int   row = mat.size() , col = mat[0].size() ;
-  
-	for(int i = 0 ;i< row ;i++){
-		for(int j = i+ 1;j < col; j++){
-			swap(mat[i][j] ,mat[j][i]) ;
-			
-			
-		}
-	}
-	return mat ;
-}
-vector<int > Build(string & pat){
-	int n = pat.size();
-   vector<int> lps(n ,0);
-	int prefix=0 ;
-	int suffix = 1;
-
-	while(suffix < n){
-		if(pat[prefix]==pat[suffix]){
-			prefix++;
-			lps[suffix]=prefix ;
-			suffix;
-		}
-	}
-
-}
-
-vector<vector<int>> transpose(vector<vector<int>>& mat) {
-    int   row = mat.size() , col = mat[0].size() ;
-  
-	for(int i = 0 ;i< row ;i++){
-		for(int j = i+ 1;j < col; j++){
-			swap(mat[i][j] ,mat[j][i]) ;
-			
-			
-		}
-	}
-	return mat ;
-}
-vector<int > Build(string & pat){
-	int n = pat.size();
-   vector<int> lps(n ,0);
-	int prefix=0 ;
-	int suffix = 1;
-
-	while(suffix < n){
-		if(pat[prefix]==pat[suffix]){
-			prefix++;
-			lps[suffix]=prefix ;
-			suffix;
-		}
-	}
-
-}
-
-vector<vector<int>> transpose(vector<vector<int>>& mat) {
-    int   row = mat.size() , col = mat[0].size() ;
-  
-	for(int i = 0 ;i< row ;i++){
-		for(int j = i+ 1;j < col; j++){
-			swap(mat[i][j] ,mat[j][i]) ;
-			
-			
-		}
-	}
-	return mat ;
-}
-vector<int > Build(string & pat){
-	int n = pat.size();
-   vector<int> lps(n ,0);
-	int prefix=0 ;
-	int suffix = 1;
-
-	while(suffix < n){
-		if(pat[prefix]==pat[suffix]){
-			prefix++;
-			lps[suffix]=prefix ;
-			suffix;
-		}
-	}
-
-}
-
-vector<vector<int>> transpose(vector<vector<int>>& mat) {
-    int   row = mat.size() , col = mat[0].size() ;
-  
-	for(int i = 0 ;i< row ;i++){
-		for(int j = i+ 1;j < col; j++){
-			swap(mat[i][j] ,mat[j][i]) ;
-			
-			
-		}
-	}
-	return mat ;
-}
-vector<int > Build(string & pat){
-	int n = pat.size();
-   vector<int> lps(n ,0);
-	int prefix=0 ;
-	int suffix = 1;
-
-	while(suffix < n){
-		if(pat[prefix]==pat[suffix]){
-			prefix++;
-			lps[suffix]=prefix ;
-			suffix;
-		}
-	}
-
-}
-
-vector<vector<int>> transpose(vector<vector<int>>& mat) {
-    int   row = mat.size() , col = mat[0].size() ;
-  
-	for(int i = 0 ;i< row ;i++){
-		for(int j = i+ 1;j < col; j++){
-			swap(mat[i][j] ,mat[j][i]) ;
-			
-			
-		}
-	}
-	return mat ;
-}
-vector<int > Build(string & pat){
-	int n = pat.size();
-   vector<int> lps(n ,0);
-	int prefix=0 ;
-	int suffix = 1;
-
-	while(suffix < n){
-		if(pat[prefix]==pat[suffix]){
-			prefix++;
-			lps[suffix]=prefix ;
-			suffix;
-		}
-	}
-
-}
-
-vector<vector<int>> transpose(vector<vector<int>>& mat) {
-    int   row = mat.size() , col = mat[0].size() ;
-  
-	for(int i = 0 ;i< row ;i++){
-		for(int j = i+ 1;j < col; j++){
-			swap(mat[i][j] ,mat[j][i]) ;
-			
-			
-		}
-	}
-	return mat ;
-}
-vector<int > Build(string & pat){
-	int n = pat.size();
-   vector<int> lps(n ,0);
-	int prefix=0 ;
-	int suffix = 1;
-
-	while(suffix < n){
-		if(pat[prefix]==pat[suffix]){
-			prefix++;
-			lps[suffix]=prefix ;
-			suffix;
-		}
-	}
-
-}
-
-vector<vector<int>> transpose(vector<vector<int>>& mat) {
-    int   row = mat.size() , col = mat[0].size() ;
-  
-	for(int i = 0 ;i< row ;i++){
-		for(int j = i+ 1;j < col; j++){
-			swap(mat[i][j] ,mat[j][i]) ;
-			
-			
-		}
-	}
-	return mat ;
+    return solve(lists, 0, lists.size() - 1);
 }
